@@ -17,7 +17,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import Select
 
-emoji = u'\U0001F44D'
+emoji = u'\U0001F44D' #Thumbs up emoji
 
 email = input("Enter your email: ")
 password = getpass.getpass()
@@ -59,9 +59,9 @@ while True:
     driver.implicitly_wait(20)
     time.sleep(1)
     namefield = WebDriverWait(driver, 20).until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[2]/div[2]/div/div/ul/li/div/div[1]/div/h3/strong"))).text
-    name = namefield.split(' ')[0]
+    name = namefield.split(' ')[0] #Select firstname
     try:
-        likebutton = driver.find_element(by=By.XPATH, value="/html/body/div[2]/div[2]/div/div/ul/li/div/ul/li/a")
+        likebutton = driver.find_element(by=By.XPATH, value="/html/body/div[2]/div[2]/div/div/ul/li/div/ul/li/a") #Look for a like button
     except Exception:
         print("Likebutton not found!")
         input("Script finished. Press any button to exit.")
