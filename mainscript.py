@@ -86,7 +86,55 @@ elif index == 2:
     driver.find_element(by=By.XPATH, value="/html/body/div[2]/div[3]/div[3]/div[1]/div/div/ul/li[2]/a").click() #Click on post button
     driver.implicitly_wait(20)
     time.sleep(1)
-    driver.find_element
+    quoteslist = [
+                    '"We cannot solve problems with the kind of thinking we employed when we came up with them." — Albert Einstein',
+                    '"Learn as if you will live forever, live like you will die tomorrow." — Mahatma Gandhi',
+                    '"Success is not final; failure is not fatal: It is the courage to continue that counts." — Winston S. Churchill',
+                    '"The road to success and the road to failure are almost exactly the same." — Colin R. Davis',
+                    '"It is better to fail in originality than to succeed in imitation." — Herman Melville',
+                    '“Success usually comes to those who are too busy looking for it.” — Henry David Thoreau',
+                    '“Develop success from failures. Discouragement and failure are two of the surest stepping stones to success.” —Dale Carnegie',
+                    '''"Nothing in the world can take the place of Persistence. Talent will not; nothing is more common than unsuccessful men with talent. Genius will not; unrewarded genius is almost a proverb. Education will not; the world is full of educated derelicts. The slogan 'Press On' has solved and always will solve the problems of the human race." —Calvin Coolidge''',
+                    '“There are three ways to ultimate success: The first way is to be kind. The second way is to be kind. The third way is to be kind.” —Mister Rogers',
+                    '“Success is peace of mind, which is a direct result of self-satisfaction in knowing you made the effort to become the best of which you are capable.” —John Wooden',
+                    '“I never dreamed about success. I worked for it.” —Estée Lauder',
+                    '“Success is getting what you want, happiness is wanting what you get.” ―W. P. Kinsella',
+                    '“The pessimist sees difficulty in every opportunity. The optimist sees opportunity in every difficulty." — Winston Churchill',
+                    '“Don’t let yesterday take up too much of today.” — Will Rogers',
+                    '“You learn more from failure than from success. Don’t let it stop you. Failure builds character.” — Unknown ',
+                    '“If you are working on something that you really care about, you don’t have to be pushed. The vision pulls you.” — Steve Jobs',
+                    '“Experience is a hard teacher because she gives the test first, the lesson afterwards.” ―Vernon Sanders Law',
+                    '“To know how much there is to know is the beginning of learning to live.” —Dorothy West',
+                    '“Goal setting is the secret to a compelling future.” — Tony Robbins',
+                    '''“Concentrate all your thoughts upon the work in hand. The sun's rays do not burn until brought to a focus. “ — Alexander Graham Bell''',
+                    '“Either you run the day or the day runs you.” — Jim Rohn',
+                    '“I’m a greater believer in luck, and I find the harder I work the more I have of it.” — Thomas Jefferson',
+                    '“When we strive to become better than we are, everything around us becomes better too.” — Paulo Coelho',
+                    '“Opportunity is missed by most people because it is dressed in overalls and looks like work.” — Thomas Edison',
+                    '“Setting goals is the first step in turning the invisible into the visible.” — Tony Robbins',
+                    '''“Your work is going to fill a large part of your life, and the only way to be truly satisfied is to do what you believe is great work. And the only way to do great work is to love what you do. If you haven't found it yet, keep looking. Don't settle. As with all matters of the heart, you'll know when you find it.” — Steve Jobs''',
+                    '“It’s not about better time management. It’s about better life management” — Alexandra of The Productivity Zone',
+                    '“The elevator to success is out of order. You’ll have to use the stairs, one step at a time.” — Joe Girard',
+                    '“Be a positive energy trampoline – absorb what you need and rebound more back.” — Dave Carolan',
+                    '“People often say that motivation doesn’t last. Well, neither does bathing – that’s why we recommend it daily.” — Zig Ziglar',
+                    '“Work until your bank account looks like a phone number.” — Unknown ',
+                    '“I am so clever that sometimes I don’t understand a single word of what I am saying.” — Oscar Wilde',
+                    '“People say nothing is impossible, but I do nothing every day.” — Winnie the Pooh',
+                    '“Life is like a sewer… what you get out of it depends on what you put into it.” — Tom Lehrer',
+                    '“I always wanted to be somebody, but now I realise I should have been more specific.” — Lily Tomlin',
+                    ]
+    quote = random.choice(quoteslist)
+    image = random.choice(os.listdir(os.getcwd()+"\\images"))
+    uploadimage = driver.find_element(by=By.CSS_SELECTOR, value="#new_attachment input[type=file]").send_keys(os.getcwd()+"\\images\\{}".format(image))
+    time.sleep(10)
+    textfield = driver.find_element(by=By.XPATH, value="""//*[@id="post_body"]""")
+    textfield.send_keys(quote)
+    time.sleep(1)
+    input("test")
+    driver.find_element(by=By.XPATH, value="/html/body/div[2]/div[3]/div[3]/div[1]/div/div/form[2]/div/input").click()
+    input("Press return to exit")
+    driver.close()
+    sys.exit()
 
 i = 1
 while True:
