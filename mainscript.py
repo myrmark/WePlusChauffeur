@@ -139,7 +139,6 @@ elif index == 2:
 
 i = 1
 while True:
-    print(i)
     if i == 7 or i == 13 or i == 19 or i == 25 or i == 31 or i == 37 or i == 43 or i == 49 or i == 55 or i == 61:
         if index == 0:
             morebutton = driver.find_element(by=By.XPATH, value="/html/body/div[2]/div[4]/div/ul/li[{}]/a".format(i)).click()
@@ -200,6 +199,8 @@ while True:
             input("Script finished. Press any button to exit.")
             driver.close()
             break
+        if likebutton.get_attribute('class') == 'edit-user':
+            likebutton = driver.find_element(by=By.XPATH, value="/html/body/div[2]/div[3]/div[3]/ul/li[{}]/div/ul/li[2]/a".format(i)) #Look for a like button
         print("Clicking likebutton")
         likebutton.click()
         time.sleep(1)
@@ -221,7 +222,19 @@ while True:
                         ]
         comment = random.choice(commentlist)
         print("Commenting")
-        commentfield = driver.find_element(by=By.XPATH, value="/html/body/div[2]/div[3]/div[3]/ul/li[{}]/div/div[4]/div/form/div/input[2]".format(i))
+        try:
+            commentfield = driver.find_element(by=By.XPATH, value="/html/body/div[2]/div[3]/div[3]/ul/li[{}]/div/div[4]/div/form/div/input[2]".format(i))
+        except Exception:
+            print("Unable to find comment field. Trying again.")
+            commentfield = None
+        if commentfield == None:
+            try:
+                commentfield = driver.find_element(by=By.XPATH, value="/html/body/div[2]/div[3]/div[3]/ul/li[{}]/div/div[3]/div/form/div/input[2]".format(i))
+            except Exception:
+                print("Unable to find comment field. Aborting script.")
+                time.sleep(5)
+                driver.close()
+                sys.exit()
         commentfield.send_keys(comment)
         print(comment)
         time.sleep(1)
