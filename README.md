@@ -1,4 +1,7 @@
 # WePlusChauffeur
  
-You will need to install selenium and splinter for this to work.
-You will also need to install Firefox if you don't already have it installed.
+prerequisite:
+Mozilla Firefox
+Python 3.10
+
+Use "pip install -r requirements.txt" to install the required modules
