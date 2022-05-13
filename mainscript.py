@@ -41,7 +41,7 @@ elif index == 2:
 chosenbrowser = 'Do you want to use Chrome or Firefox?: '
 alternatives = ['Chrome', 'Firefox']
 
-alternatives, index = pick(alternatives, chosenbrowser)
+alternatives, index2 = pick(alternatives, chosenbrowser)
 
 if alternatives == 'Firefox':
     driver = webdriver.Firefox()
@@ -140,7 +140,6 @@ elif index == 2:
     textfield = driver.find_element(by=By.XPATH, value="""//*[@id="post_body"]""")
     textfield.send_keys(quote)
     time.sleep(1)
-    input("test")
     driver.find_element(by=By.XPATH, value="/html/body/div[2]/div[3]/div[3]/div[1]/div/div/form[2]/div/input").click()
     input("Press return to exit")
     os.remove(os.getcwd()+"\\images\\{}".format(image))
