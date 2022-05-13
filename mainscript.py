@@ -23,6 +23,8 @@ emoji = u'\U0001F44D' #Thumbs up emoji
 email = input("Enter your email: ")
 password = getpass.getpass()
 
+myname = input('Enter your full name exactly as it appears in We+: ')
+
 title = 'What would you like to do?: '
 options = ['Like/comment company feed', 'Like/comment group feed', 'Post to group feed']
 option, index = pick(options, title)
@@ -192,7 +194,7 @@ while True:
         comment = random.choice(commentlist)
         print("Commenting on {}'s post".format(name))
         commentfield = driver.find_element(by=By.XPATH, value="""//*[@id="comment_body"]""")
-        if "My Name" not in fullname:
+        if myname not in fullname:
             commentfield.send_keys(comment)
             print(comment)
             time.sleep(1)
