@@ -36,7 +36,15 @@ elif index == 1:
 elif index == 2:
     print('Posting something motivational to group feed!')
 
-driver = webdriver.Firefox()
+chosenbrowser = 'Do you want to use Chrome or Firefox?: '
+alternatives = ['Chrome', 'Firefox']
+
+alternatives, index = pick(alternatives, chosenbrowser)
+
+if alternatives == 'Firefox':
+    driver = webdriver.Firefox()
+elif alternatives == 'Chrome':
+    driver = webdriver.Chrome()
 driver.get('https://weplusapp.com')
 driver.implicitly_wait(20)
 logincheck = WebDriverWait(driver, 20).until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div[2]/div/form/div[3]/a[1]"))).text
