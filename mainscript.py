@@ -153,6 +153,7 @@ while True:
         driver.implicitly_wait(20)
         time.sleep(1)
         namefield = WebDriverWait(driver, 20).until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[2]/div[2]/div/div/ul/li/div/div[1]/div/h3/strong"))).text
+        fullname = namefield
         name = namefield.split(' ')[0] #Select firstname
         try:
             likebutton = driver.find_element(by=By.XPATH, value="/html/body/div[2]/div[2]/div/div/ul/li/div/ul/li/a") #Look for a like button
@@ -183,11 +184,12 @@ while True:
         comment = random.choice(commentlist)
         print("Commenting on {}'s post".format(name))
         commentfield = driver.find_element(by=By.XPATH, value="""//*[@id="comment_body"]""")
-        commentfield.send_keys(comment)
-        print(comment)
-        time.sleep(1)
-        commentfield.send_keys(Keys.RETURN)
-        time.sleep(1)
+        if "My Name" not in fullname:
+            commentfield.send_keys(comment)
+            print(comment)
+            time.sleep(1)
+            commentfield.send_keys(Keys.RETURN)
+            time.sleep(1)
         xbutton = driver.find_element(by=By.XPATH, value="/html/body/div[2]/div[2]/div/a").click()
         time.sleep(1)
 
